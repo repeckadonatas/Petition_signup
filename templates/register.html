@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Registration page</h1>
+
+<form method="post" action="#">
+  {{ form.csrf_token }}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      {{ form.name.label(class="form-control-label") }}
+      {{ form.name(class="form-control") }}
+      {% if form.name.errors %}
+        {% for error in form.name.errors %}
+      <small><font color="red">{{ error }}</font></small>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="form-group col-md-6">
+      {{ form.email.label(class="form-control-label") }}
+      {{ form.email(class="form-control") }}
+      {% if form.email.errors %}
+        {% for error in form.email.errors %}
+      <small><font color="red">{{ error }}</font></small>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="form-group col-md-6">
+      {{ form.message.label(class="form-control-label") }}
+      {{ form.message(class="form-control", rows="5") }}
+      {% if form.message.errors %}
+        {% for error in form.message.errors %}
+          <small><font color="red">{{ error }}</font></small>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+<button type="submit" class="btn btn-primary">Register</button>
+</form>
+
+
+{% endblock %}
